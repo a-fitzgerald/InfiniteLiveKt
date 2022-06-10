@@ -118,7 +118,7 @@ When you perform a request there are a multitude of ways your code might fail.
 Thankfully, with the help of functional programming we can appropriately handle them whenever an error occurs, 
 thus avoiding unexpected failures which may cause a fatal crash.
 
-They are two major type of exceptions you need to be aware of :
+There are two major type of exceptions you need to be aware of :
 - InfiniteLiveException
 - [Exception](https://kotlinlang.org/docs/exceptions.html)
 
