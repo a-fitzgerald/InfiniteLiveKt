@@ -77,15 +77,13 @@ class SerializationTest {
         @JvmStatic
         private fun historicalFlightUnique() = historicalFlights
             .take(LIMIT_USER_IDS)
-            .filterNot { (_, flights) -> flights.data.isNullOrEmpty() }
-            .map { (userId, flights) -> userId to flights.data!!.random().id }
+            .mapNotNull { (userId, flights) -> flights.data?.randomOrNull()?.id?.let { userId to it } }
             .map { (userId, flightId) -> Arguments.of(userId, flightId) }
 
         @JvmStatic
         private fun historicalAtcSessionUnique() = historicalAtcSessions
             .take(LIMIT_USER_IDS)
-            .filterNot { (_, atcSessions) -> atcSessions.data.isNullOrEmpty() }
-            .map { (userId, atcSessions) -> userId to atcSessions.data!!.random().id }
+            .mapNotNull { (userId, atcSessions) -> atcSessions.data?.randomOrNull()?.id?.let { userId to it } }
             .map { (userId, atcSession) -> Arguments.of(userId, atcSession) }
 
     }
