@@ -1,7 +1,7 @@
 # InfiniteLiveKt
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.avonfitzgerald/infinitelive/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.avonfitzgerald/infinitelive/)
+[![Maven Central](https://img.shields.io/maven-central/v/com.avonfitzgerald/infinitelive.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.avonfitzgerald%22%20AND%20a:%22infinitelive%22)
 
 Fast-track development with the 
 [Infinite Flight Live API](https://infiniteflight.com/guide/developer-reference/live-api/overview). 
@@ -12,7 +12,7 @@ describe the behaviour of any function. This is accomplished using the [Λrrow l
 [Either](https://arrow-kt.io/docs/apidocs/arrow-core/arrow.core/-either/) class.
 
 Additionally, the InfiniteLiveKt library provides implementations of all publicly defined models and endpoints of 
-the Infinite Flight Live API.
+the [Infinite Flight Live API](https://infiniteflight.com/guide/developer-reference/live-api/overview).
 
 ## Setup
 
@@ -192,6 +192,10 @@ suspend fun printFlightsFromServer(serverId: String): Either<Throwable, Unit> = 
    flights.forEach(::println)
 }
 ```
+
+Predefined endpoints from InfiniteLiveKt do not deserialize deprecated fields from the
+[Infinite Flight Live API](https://infiniteflight.com/guide/developer-reference/live-api/overview)
+and do not fall back to default values except for enums (they will default to their associated INVALID field).
 
 ### Custom Get/Post Requests
 
