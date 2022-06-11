@@ -22,5 +22,5 @@ data class FlightPlanInfo(
     val flightId: String,
     val lastUpdate: String,
     val flightPlanItems: List<FlightPlanItem>,
-    val flightPlanType: FlightPlanType
+    val flightPlanType: FlightPlanType = FlightPlanType.INVALID
 )

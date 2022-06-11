@@ -2,8 +2,8 @@ package com.avonfitzgerald.infinitelive.endpoint.airport
 
 import com.avonfitzgerald.infinitelive.core.Get
 import com.avonfitzgerald.infinitelive.endpoint.airport.model.AirportStatus
+import com.avonfitzgerald.infinitelive.endpoint.common.jsonDefault
 import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.json.Json
 
 /**
  * Retrieve active ATC status information and inbound/outbound aircraft information for
@@ -15,7 +15,6 @@ import kotlinx.serialization.json.Json
  */
 class GetWorldStatus(sessionId: String) : Get<List<AirportStatus>>("sessions/$sessionId/world") {
 
-    override fun deserialize(data: String): List<AirportStatus> =
-        Json.decodeFromString(data)
+    override fun deserialize(data: String): List<AirportStatus> = jsonDefault.decodeFromString(data)
 
 }

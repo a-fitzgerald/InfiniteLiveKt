@@ -52,7 +52,7 @@ data class UserStats(
     val landingCount: Int,
     val flightTime: Int,
     val atcOperations: Int,
-    val atcRank: AtcRank?,
+    val atcRank: AtcRank = AtcRank.INVALID,
     val grade: Int,
     val hash: String
 )

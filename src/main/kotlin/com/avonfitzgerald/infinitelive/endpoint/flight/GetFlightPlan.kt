@@ -6,8 +6,8 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
 private val json = Json {
-    // Ignoring "waypoints" deprecated property
-    ignoreUnknownKeys = true
+    ignoreUnknownKeys = true // Ignoring "waypoints" deprecated property
+    coerceInputValues = true
 }
 
 /**

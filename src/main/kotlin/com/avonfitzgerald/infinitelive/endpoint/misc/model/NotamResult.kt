@@ -25,7 +25,7 @@ data class NotamResult(
     val id: String,
     val title: String,
     val author: String,
-    val type: NotamType,
+    val type: NotamType = NotamType.INVALID,
     val sessionId: String,
     val radius: Float,
     val message: String,

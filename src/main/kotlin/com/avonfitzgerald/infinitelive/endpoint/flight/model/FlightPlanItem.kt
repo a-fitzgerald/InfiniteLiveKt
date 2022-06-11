@@ -25,7 +25,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class FlightPlanItem(
     val name: String?,
-    val type: FlightPlanItemType,
+    val type: FlightPlanItemType = FlightPlanItemType.INVALID,
     val children: List<FlightPlanItem>?,
     val identifier: String?,
     val altitude: Int,

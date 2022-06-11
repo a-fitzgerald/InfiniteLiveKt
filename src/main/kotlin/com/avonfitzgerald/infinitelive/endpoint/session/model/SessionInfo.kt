@@ -17,5 +17,5 @@ data class SessionInfo(
     val name: String,
     val maxUsers: Int,
     val userCount: Int,
-    val type: SessionType
+    val type: SessionType = SessionType.INVALID
 )

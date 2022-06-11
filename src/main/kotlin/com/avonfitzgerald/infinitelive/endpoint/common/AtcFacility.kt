@@ -18,5 +18,5 @@ data class AtcFacility(
     val airportIcao: String?,
     val latitude: Double,
     val longitude: Double,
-    val frequencyType: AtcEntityType
+    val frequencyType: AtcEntityType = AtcEntityType.INVALID
 )

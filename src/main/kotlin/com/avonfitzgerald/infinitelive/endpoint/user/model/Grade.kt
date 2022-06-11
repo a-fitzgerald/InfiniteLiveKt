@@ -15,5 +15,5 @@ data class Grade(
     val rules: List<GradeRule>,
     val index: Int,
     val name: String,
-    val state: GradeState
+    val state: GradeState = GradeState.INVALID
 )

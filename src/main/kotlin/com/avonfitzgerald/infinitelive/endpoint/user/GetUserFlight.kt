@@ -1,9 +1,9 @@
 package com.avonfitzgerald.infinitelive.endpoint.user
 
 import com.avonfitzgerald.infinitelive.core.Get
+import com.avonfitzgerald.infinitelive.endpoint.common.jsonDefault
 import com.avonfitzgerald.infinitelive.endpoint.user.model.UserFlight
 import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.json.Json
 
 /**
  * Retrieves a flight from the logbook of a given user.
@@ -16,7 +16,6 @@ import kotlinx.serialization.json.Json
 class GetUserFlight(userId: String, flightId: String) :
     Get<UserFlight>("users/$userId/flights/$flightId") {
 
-    override fun deserialize(data: String): UserFlight =
-        Json.decodeFromString(data)
+    override fun deserialize(data: String): UserFlight = jsonDefault.decodeFromString(data)
 
 }

@@ -6,8 +6,8 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
 private val json = Json {
-    // Ignoring "groups" deprecated property
-    ignoreUnknownKeys = true
+    ignoreUnknownKeys = true // Ignoring "groups" deprecated property
+    coerceInputValues = true
 }
 
 /**

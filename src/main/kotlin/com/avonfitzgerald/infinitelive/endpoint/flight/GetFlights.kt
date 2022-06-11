@@ -1,9 +1,9 @@
 package com.avonfitzgerald.infinitelive.endpoint.flight
 
 import com.avonfitzgerald.infinitelive.core.Get
+import com.avonfitzgerald.infinitelive.endpoint.common.jsonDefault
 import com.avonfitzgerald.infinitelive.endpoint.flight.model.FlightEntry
 import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.json.Json
 
 /**
  * Retrieve a list of all flights for a session.
@@ -13,5 +13,5 @@ import kotlinx.serialization.json.Json
  * @param sessionId ID of the session returned from the Sessions endpoint.
  */
 class GetFlights(sessionId: String) : Get<List<FlightEntry>>("sessions/$sessionId/flights") {
-    override fun deserialize(data: String): List<FlightEntry> = Json.decodeFromString(data)
+    override fun deserialize(data: String): List<FlightEntry> = jsonDefault.decodeFromString(data)
 }

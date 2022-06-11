@@ -18,7 +18,7 @@ data class GradeRule(
     val ruleIndex: Int,
     val referenceValue: Double,
     val userValue: Double,
-    val state: GradeState,
+    val state: GradeState = GradeState.INVALID,
     val userValueString: String,
     val referenceValueString: String,
     val definition: GradeRuleDefinition

@@ -1,10 +1,10 @@
 package com.avonfitzgerald.infinitelive.endpoint.user
 
 import com.avonfitzgerald.infinitelive.core.Get
+import com.avonfitzgerald.infinitelive.endpoint.common.jsonDefault
 import com.avonfitzgerald.infinitelive.endpoint.user.model.PaginatedList
 import com.avonfitzgerald.infinitelive.endpoint.user.model.UserFlight
 import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.json.Json
 
 /**
  * Retrieves the online flight logbook for a given user.
@@ -17,7 +17,6 @@ import kotlinx.serialization.json.Json
 class GetUserFlights(userId: String, page: Int = 1) :
     Get<PaginatedList<List<UserFlight>>>("users/$userId/flights?page=$page") {
 
-    override fun deserialize(data: String): PaginatedList<List<UserFlight>> =
-        Json.decodeFromString(data)
+    override fun deserialize(data: String): PaginatedList<List<UserFlight>> = jsonDefault.decodeFromString(data)
 
 }

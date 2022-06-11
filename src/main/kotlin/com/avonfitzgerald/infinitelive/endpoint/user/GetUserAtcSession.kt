@@ -1,9 +1,9 @@
 package com.avonfitzgerald.infinitelive.endpoint.user
 
 import com.avonfitzgerald.infinitelive.core.Get
+import com.avonfitzgerald.infinitelive.endpoint.common.jsonDefault
 import com.avonfitzgerald.infinitelive.endpoint.user.model.UserAtcSession
 import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.json.Json
 
 /**
  * Retrieves an ATC session from the log of a given user.
@@ -16,7 +16,6 @@ import kotlinx.serialization.json.Json
 class GetUserAtcSession(userId: String, atcSessionId: String) :
     Get<UserAtcSession>("users/$userId/atc/$atcSessionId") {
 
-    override fun deserialize(data: String): UserAtcSession =
-        Json.decodeFromString(data)
+    override fun deserialize(data: String): UserAtcSession = jsonDefault.decodeFromString(data)
 
 }

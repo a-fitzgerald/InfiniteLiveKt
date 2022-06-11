@@ -17,7 +17,7 @@ data class GradeRuleDefinition(
     val name: String,
     val description: String,
     val property: String,
-    val operator: GradeOperator,
+    val operator: GradeOperator = GradeOperator.INVALID,
     val period: Double,
     val order: Int
 )

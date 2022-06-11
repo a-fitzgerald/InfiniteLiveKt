@@ -1,10 +1,10 @@
 package com.avonfitzgerald.infinitelive.endpoint.user
 
 import com.avonfitzgerald.infinitelive.core.Get
+import com.avonfitzgerald.infinitelive.endpoint.common.jsonDefault
 import com.avonfitzgerald.infinitelive.endpoint.user.model.PaginatedList
 import com.avonfitzgerald.infinitelive.endpoint.user.model.UserAtcSession
 import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.json.Json
 
 /**
  * Retrieves the ATC session log for a given user.
@@ -17,7 +17,6 @@ import kotlinx.serialization.json.Json
 class GetUserAtcSessions(userId: String, page: Int = 1) :
     Get<PaginatedList<List<UserAtcSession>>>("users/$userId/atc?page=$page") {
 
-    override fun deserialize(data: String): PaginatedList<List<UserAtcSession>> =
-        Json.decodeFromString(data)
+    override fun deserialize(data: String): PaginatedList<List<UserAtcSession>> = jsonDefault.decodeFromString(data)
 
 }

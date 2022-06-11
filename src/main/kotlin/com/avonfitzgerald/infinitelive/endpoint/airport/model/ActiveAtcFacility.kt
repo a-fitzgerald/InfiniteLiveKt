@@ -22,7 +22,7 @@ data class ActiveAtcFacility(
     val username: String?,
     val virtualOrganization: String?,
     val airportName: String?,
-    val type: AtcEntityType,
+    val type: AtcEntityType = AtcEntityType.INVALID,
     val latitude: Float,
     val longitude: Float,
     val startTime: String

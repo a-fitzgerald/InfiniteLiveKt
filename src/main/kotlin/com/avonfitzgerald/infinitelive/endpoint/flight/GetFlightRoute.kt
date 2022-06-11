@@ -1,9 +1,9 @@
 package com.avonfitzgerald.infinitelive.endpoint.flight
 
 import com.avonfitzgerald.infinitelive.core.Get
+import com.avonfitzgerald.infinitelive.endpoint.common.jsonDefault
 import com.avonfitzgerald.infinitelive.endpoint.flight.model.PositionReport
 import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.json.Json
 
 /**
  * Retrieve the flown route of a specific flight with position, altitude, speed and
@@ -19,6 +19,6 @@ import kotlinx.serialization.json.Json
 class GetFlightRoute(sessionId: String, flightId: String) :
     Get<List<PositionReport>>("sessions/$sessionId/flights/$flightId/route") {
 
-    override fun deserialize(data: String): List<PositionReport> = Json.decodeFromString(data)
+    override fun deserialize(data: String): List<PositionReport> = jsonDefault.decodeFromString(data)
 
 }
