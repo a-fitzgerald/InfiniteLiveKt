@@ -21,7 +21,7 @@ the Infinite Flight Live API.
 Add dependencies in your `build.gradle.kts` file:
 ```kotlin
 dependencies {
-    implementation("com.avonfitzgerald:infinitelive:2.0.0")
+    implementation("com.avonfitzgerald:infinitelive:2.0.1")
 }
 ```
 
@@ -39,7 +39,7 @@ Add dependencies in your `pom.xml` file:
 <dependency>
   <groupId>com.avonfitzgerald</groupId>
   <artifactId>infinitelive</artifactId>
-  <version>2.0.0</version>
+  <version>2.0.1</version>
 </dependency>
 ```
 
@@ -118,7 +118,7 @@ When you perform a request there are a multitude of ways your code might fail.
 Thankfully, with the help of functional programming we can appropriately handle them whenever an error occurs, 
 thus avoiding unexpected failures which may cause a fatal crash.
 
-They are two major type of exceptions you need to be aware of :
+There are two major type of exceptions you need to be aware of :
 - InfiniteLiveException
 - [Exception](https://kotlinlang.org/docs/exceptions.html)
 
