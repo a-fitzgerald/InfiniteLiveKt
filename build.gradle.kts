@@ -21,9 +21,10 @@ dependencies {
     testImplementation(kotlin("test"))
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.8.2")
 
-    implementation("io.arrow-kt:arrow-core:1.1.2")
+    api("io.arrow-kt:arrow-core:1.1.2")
+    api("io.ktor:ktor-client-cio:2.0.2")
+
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
-    implementation("io.ktor:ktor-client-cio:2.0.1")
 }
 
 tasks.test {
