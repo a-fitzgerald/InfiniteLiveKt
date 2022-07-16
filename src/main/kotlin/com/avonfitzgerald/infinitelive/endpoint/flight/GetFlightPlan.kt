@@ -1,14 +1,9 @@
 package com.avonfitzgerald.infinitelive.endpoint.flight
 
 import com.avonfitzgerald.infinitelive.core.Get
+import com.avonfitzgerald.infinitelive.endpoint.common.jsonDefault
 import com.avonfitzgerald.infinitelive.endpoint.flight.model.FlightPlanInfo
 import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.json.Json
-
-private val json = Json {
-    ignoreUnknownKeys = true // Ignoring "waypoints" deprecated property
-    coerceInputValues = true
-}
 
 /**
  * Retrieve the flight plan for a specific active flight.
@@ -21,6 +16,6 @@ private val json = Json {
 class GetFlightPlan(sessionId: String, flightId: String) :
     Get<FlightPlanInfo>("sessions/$sessionId/flights/$flightId/flightplan") {
 
-    override fun deserialize(data: String): FlightPlanInfo = json.decodeFromString(data)
+    override fun deserialize(data: String): FlightPlanInfo = jsonDefault.decodeFromString(data)
 
 }

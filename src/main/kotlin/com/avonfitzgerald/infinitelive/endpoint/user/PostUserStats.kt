@@ -1,15 +1,11 @@
 package com.avonfitzgerald.infinitelive.endpoint.user
 
 import com.avonfitzgerald.infinitelive.core.Post
+import com.avonfitzgerald.infinitelive.endpoint.common.jsonDefault
 import com.avonfitzgerald.infinitelive.endpoint.user.model.UserStats
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
-
-private val json = Json {
-    ignoreUnknownKeys = true // Ignoring "groups" deprecated property
-    coerceInputValues = true
-}
 
 /**
  * Retrieve user statistics for multiple users, including their grade, flight time and username.
@@ -30,7 +26,7 @@ class PostUserStats(
     Json.encodeToString(UserStatsBody.serializer(), UserStatsBody(userIds, discourseNames, userHashes))
 ) {
 
-    override fun deserialize(data: String): List<UserStats> = json.decodeFromString(data)
+    override fun deserialize(data: String): List<UserStats> = jsonDefault.decodeFromString(data)
 
     @Serializable
     private data class UserStatsBody(
