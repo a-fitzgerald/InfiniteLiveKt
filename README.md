@@ -21,7 +21,7 @@ the [Infinite Flight Live API](https://infiniteflight.com/guide/developer-refere
 Add dependencies in your `build.gradle.kts` file:
 ```kotlin
 dependencies {
-    implementation("com.avonfitzgerald:infinitelive:2.0.4")
+    implementation("com.avonfitzgerald:infinitelive:2.1.0")
 }
 ```
 
@@ -39,7 +39,7 @@ Add dependencies in your `pom.xml` file:
 <dependency>
   <groupId>com.avonfitzgerald</groupId>
   <artifactId>infinitelive</artifactId>
-  <version>2.0.4</version>
+  <version>2.1.0</version>
 </dependency>
 ```
 
@@ -183,6 +183,9 @@ endpoints of the Infinite Flight Live API :
 - [GetUserAtcSessions](https://infiniteflight.com/guide/developer-reference/live-api/user-atc-sessions)
 - [GetUserAtcSession](https://infiniteflight.com/guide/developer-reference/live-api/user-atc-session)
 - [GetNotams](https://infiniteflight.com/guide/developer-reference/live-api/notams)
+- [GetAircraft](https://infiniteflight.com/guide/developer-reference/live-api/aircraft)
+- [GetAircraftLiveries](https://infiniteflight.com/guide/developer-reference/live-api/aircraft-liveries)
+- [GetAllLiveries](https://api.infiniteflight.com/public/v2/aircraft/liveries)
 
 Example:
 
