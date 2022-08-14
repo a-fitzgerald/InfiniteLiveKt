@@ -10,8 +10,8 @@ import com.avonfitzgerald.infinitelive.endpoint.airport.GetWorldStatus
 import com.avonfitzgerald.infinitelive.endpoint.flight.GetFlightPlan
 import com.avonfitzgerald.infinitelive.endpoint.flight.GetFlightRoute
 import com.avonfitzgerald.infinitelive.endpoint.flight.GetFlights
-import com.avonfitzgerald.infinitelive.endpoint.misc.GetNotams
-import com.avonfitzgerald.infinitelive.endpoint.misc.GetOceanicTracks
+import com.avonfitzgerald.infinitelive.endpoint.misc.*
+import com.avonfitzgerald.infinitelive.endpoint.misc.model.AircraftPackage
 import com.avonfitzgerald.infinitelive.endpoint.session.GetSessions
 import com.avonfitzgerald.infinitelive.endpoint.session.model.SessionInfo
 import com.avonfitzgerald.infinitelive.endpoint.user.*
@@ -31,6 +31,7 @@ import kotlin.test.Test
 
 private const val LIMIT_FLIGHT_ID_PER_SESSION = 3
 private const val LIMIT_USER_IDS = 5
+private const val LIMIT_AIRCRAFT_IDS = 3
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation::class)
 class SerializationTest {
@@ -45,6 +46,8 @@ class SerializationTest {
 
         private var historicalFlights = mutableListOf<Pair<String, PaginatedList<List<UserFlight>>>>()
         private var historicalAtcSessions = mutableListOf<Pair<String, PaginatedList<List<UserAtcSession>>>>()
+
+        private var aircraftIds = emptyList<String>()
 
         @JvmStatic
         private fun sessionIds() = sessionIds
@@ -85,6 +88,9 @@ class SerializationTest {
             .take(LIMIT_USER_IDS)
             .mapNotNull { (userId, atcSessions) -> atcSessions.data?.randomOrNull()?.id?.let { userId to it } }
             .map { (userId, atcSession) -> Arguments.of(userId, atcSession) }
+
+        @JvmStatic
+        private fun aircraftIds() = aircraftIds.shuffled().take(LIMIT_AIRCRAFT_IDS)
 
     }
 
@@ -144,6 +150,14 @@ class SerializationTest {
     fun `Endpoint - GetUserAtcSessions`(userId: String) = runBlocking {
         live.getRequest(GetUserAtcSessions(userId)).tap { historicalAtcSessions += userId to it }
     }.assertEitherInfiniteLive<InfiniteLiveException>()
+
+    @Test
+    @Order(5)
+    fun `Endpoint - GetAircraft`() = runBlocking {
+        live.getRequest(GetAircraft()).tap {
+            aircraftIds = it.map(AircraftPackage::id)
+        }.assertEitherInfiniteLive<InfiniteLiveException>()
+    }
 
     @ParameterizedTest
     @MethodSource("serverFlightIds")
@@ -216,6 +230,17 @@ class SerializationTest {
     @MethodSource("sessionIds")
     fun `Endpoint - GetNotams`(sessionId: String) = runBlocking {
         live.getRequest(GetNotams(sessionId))
+    }.assertEitherInfiniteLive<InfiniteLiveException>()
+
+    @ParameterizedTest
+    @MethodSource("aircraftIds")
+    fun `Endpoint - GetAircraftLiveries`(aircraftId: String) = runBlocking {
+        live.getRequest(GetAircraftLiveries(aircraftId))
+    }.assertEitherInfiniteLive<InfiniteLiveException>()
+
+    @Test
+    fun `Endpoint - GetAllLiveries`() = runBlocking {
+        live.getRequest(GetAllLiveries())
     }.assertEitherInfiniteLive<InfiniteLiveException>()
 
 }
