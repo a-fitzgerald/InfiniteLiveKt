@@ -11,6 +11,7 @@ import kotlinx.serialization.Serializable
  * @property operator Math comparison.
  * @property period Time period in which the rule must be met.
  * @property order Order of the Rule within the rules property of the Grade object.
+ * @property group Section of the definition
  */
 @Serializable
 data class GradeRuleDefinition(
@@ -19,5 +20,6 @@ data class GradeRuleDefinition(
     val property: String,
     val operator: GradeOperator = GradeOperator.INVALID,
     val period: Double,
-    val order: Int
+    val order: Int,
+    val group: Int
 )
