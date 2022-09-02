@@ -1,14 +1,12 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
-    kotlin("jvm") version "1.6.21"
-    kotlin("plugin.serialization") version "1.6.21"
+    kotlin("jvm") version "1.7.10"
+    kotlin("plugin.serialization") version "1.7.10"
     id("java-library")
     id("maven-publish")
     id("signing")
 }
 
-val versionName = "2.0-SNAPSHOT"
+val versionName = "2.1-SNAPSHOT"
 
 group = "com.avonfitzgerald"
 version = versionName
@@ -22,17 +20,13 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.9.0")
 
     api("io.arrow-kt:arrow-core:1.1.2")
-    api("io.ktor:ktor-client-cio:2.0.3")
+    api("io.ktor:ktor-client-cio:2.1.0")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
 }
 
 tasks.test {
     useJUnitPlatform()
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
 }
 
 java {
